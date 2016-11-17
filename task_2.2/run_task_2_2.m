@@ -1,16 +1,16 @@
 %% Simulation parameters.
-tstart=0;      % Sim start time
-tstop=1000*4;    % Sim stop time
-tsamp=10;      % Sampling time for how often states are stored. (NOT ODE solver time step)
+tstart=0;           % Sim start time
+tstop=3000;         % Sim stop time
+tsamp=10;           % Sampling time for how often states are stored. (NOT ODE solver time step)
                 
 p0=[1500, 500]; % Initial position (NED)
 v0=[6.63 0]';  % Initial velocity (body)
 psi0=deg2rad(150);        % Inital yaw angle
 r0=0;          % Inital yaw rate
-c=0;           % Current on (1)/off (0)
+c=1;           % Current on (1)/off (0)
 
 %% Load the waypoints
-load('/Users/Lars/Dropbox/NTNU/Semester7/TTK4190/Assignments/Assignment 3/task_2.2/WP.mat');
+load('WP.mat');
 
 %% 1st order Nomoto model
 K = 0.066928;
