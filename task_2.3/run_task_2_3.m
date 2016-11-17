@@ -1,6 +1,6 @@
 %% Simulation parameters.
 tstart=0;           % Sim start time
-tstop=3000;         % Sim stop time
+tstop=3100;         % Sim stop time
 tsamp=10;           % Sampling time for how often states are stored. (NOT ODE solver time step)
                 
 p0=[1500, 500]; % Initial position (NED)
@@ -12,16 +12,17 @@ c=1;           % Current on (1)/off (0)
 %% Load the waypoints
 load('WP.mat');
 
+
 %% 1st order Nomoto model
 K = 0.066928;
 T = 118.426906;
 
 %% Heading Controller gains
 w_n = 0.1;
-zeta = 0.8;
+zeta = 1;
 
 K_p = w_n^2*T/K;
-K_d = (2*zeta*w_n*T - 1)/K;
+K_d = 2.2*(2*zeta*w_n*T - 1)/K;
 K_i = K_p*w_n/10;
 
 %% Surge model constants
@@ -41,7 +42,7 @@ w_ns = 0.01;
 
 %% Simulation
 sim MSFartoystyring
-pathplotter(p(:,1), p(:,2), psi, tsamp, 1, tstart, tstop, 0, WP);
+pathplotter(p(:,1), p(:,2), psi, tsamp, 7, tstart, tstop, 0, WP);
 
 figure(4)
 plot(t, rad2deg(psi_r))
